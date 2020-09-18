@@ -1,0 +1,1 @@
+public enum ubic{NORTH, SOUTH,CENTER}
