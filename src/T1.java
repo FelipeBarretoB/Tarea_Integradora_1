@@ -92,19 +92,19 @@ public class T1{
 	*@return returns the ubicaction that the user typed in the console 
 	*/
 	
-	public static ubic setUbic(){
+	public static location setlocation(){
 		int inter=0;
-		ubic u=ubic.NORTH;
+		location u=location.NORTH;
 		System.out.println("¿Cual es la ubicacion inmueble?, 1 para norte, 2 para sur, y 3 para centro");
 		inter = sc.nextInt();
 		
 		if(inter==1){
-				u=ubic.NORTH;
+				u=location.NORTH;
 			}else if(inter==2){
-				u=ubic.SOUTH;
+				u=location.SOUTH;
 				
 			}else{
-				u=ubic.CENTER; 
+				u=location.CENTER; 
 			}
 		return u; 
 		
@@ -122,10 +122,10 @@ public class T1{
 	*@param pB[], array of double that holds the price of each products in Ferreteria del Barrio
 	*@param pC[], array of double that holds the price of each products in Ferreteria del Centro
 	*@param us[], array of use that holds the use for each products
-	*@param ub, ubicaction of the property
+	*@param loc, ubicaction of the property
 	*/
 	
-	public static void pricesForEachStore(double pFH,double pFC,double pFB, double[] quantityOfProduct, double[] pH, double[] pB, double[] pC, use[] us,ubic ub){
+	public static void pricesForEachStore(double pFH,double pFC,double pFB, double[] quantityOfProduct, double[] pH, double[] pB, double[] pC, use[] us,location loc){
 	    boolean white=false;
 		boolean black=false; 
 		boolean paint=false;
@@ -155,9 +155,9 @@ public class T1{
 		
 		
 		
-		pFH+=delivery (pFH, ub);
-		pFC+=delivery (pFC, ub);
-		pFB+=delivery (pFB, ub);
+		pFH+=delivery (pFH, loc);
+		pFC+=delivery (pFC, loc);
+		pFB+=delivery (pFB, loc);
 		
 		
 		System.out.println("El precio final de HomeCenter con domicilio es "+ pFH+" pesos");
@@ -195,39 +195,39 @@ public class T1{
 	*<b>pre:</b>  
 	*<b>post: </b>
 	*@param priceFi, double that holds the cost that will define the cost of the delivery
-	*@param ub, enum of ubic class that holds ubication of the property 
+	*@param loc, enum of location class that holds ubication of the property 
 	*@return returns the cost of the delivery
 	*/
 	
 	
-	public static int delivery (double priceFi,ubic ub){
+	public static int delivery (double priceFi,location loc){
 
 
 		if(priceFi>300000){
 			//System.out.println("No hay costo de domicilio para compras en mayores a 300000 pesos para ninguna ubicacion del inmueble");
 			return 0; 
 		}else if(priceFi<300000&&priceFi>80000){
-			if(ub==ubic.NORTH){
+			if(loc==location.NORTH){
 			
 				//System.out.println("El costo de domicilio para el norte es de 28,000 pesos); 
 				return 28000; 
-			}else if(ub==ubic.SOUTH){
+			}else if(loc==location.SOUTH){
 				
 				//System.out.println("El costo de domicilio para el sur es de 55,000 pesos"); 
 				return 55000;
-			}else if(ub==ubic.CENTER){
+			}else if(loc==location.CENTER){
 				//System.out.println("El domicilio no tiene costo en el centro");
 				return 0; 
 			}
 		}else if(priceFi<80000){
-			if(ub==ubic.NORTH){
+			if(loc==location.NORTH){
 				
 				//System.out.println("El costo de domicilio para el norte es de 120,000 pesos");
 				return 120000;
-			}else if(ub==ubic.SOUTH){
+			}else if(loc==location.SOUTH){
 				//System.out.println("El costo de domicilio para el sur es de 50,000 pesos"); 
 				return 50000;
-			}else if(ub==ubic.CENTER){
+			}else if(loc==location.CENTER){
 				//System.out.println("El costo de domicilio para el centro es de 120,000 pesos");
 				return 120000;
 				 
@@ -249,10 +249,10 @@ public class T1{
 	*@param pB[], array of double that holds the price of each products in Ferreteria del Barrio
 	*@param pC[], array of double that holds the price of each products in Ferreteria del Centro
 	*@param us[], array of use that holds the use for each products
-	*@param ub, ubicaction of the property
+	*@param loc, ubicaction of the property
 	*/
 		
-	public static void priceForCheapestStore(String[] n, double[] quantity, double[] pH,double[] pC,double[] pB, use[] us,ubic ub){
+	public static void priceForCheapestStore(String[] n, double[] quantity, double[] pH,double[] pC,double[] pB, use[] us,location loc){
 		double priceFi=0; 
 		double priceH=0;
 		double priceC=0;
@@ -283,23 +283,23 @@ public class T1{
 		if(priceFi>300000){
 			System.out.println("No hay costo de domicilio para compras en mayores a 300000 pesos para ninguna ubicacion del inmueble, el precio final sigue siendo "+priceFi+" pesos");
 		}else if(priceFi<300000&&priceFi>80000){
-			if(ub==ubic.NORTH){
+			if(loc==location.NORTH){
 				priceFi+=28000;
 				System.out.println("El costo de domicilio para el norte es de 28,000 pesos, el precio final con domicilio es "+priceFi+" pesos"); 
-			}else if(ub==ubic.SOUTH){
+			}else if(loc==location.SOUTH){
 				priceFi+=55000;
 				System.out.println("El costo de domicilio para el sur es de 55,000 pesos, el precio final con domicilio es "+priceFi+" pesos"); 
-			}else if(ub==ubic.CENTER){
+			}else if(loc==location.CENTER){
 				System.out.println("El domicilio no tiene costo en el centro, el precio final con domicilio es "+priceFi+" pesos");
 			}
 		}else if(priceFi<80000){
-			if(ub==ubic.NORTH){
+			if(loc==location.NORTH){
 				priceFi+=120000;
 				System.out.println("El costo de domicilio para el norte es de 120,000 pesos, el precio final con domicilio es "+priceFi+" pesos");
-			}else if(ub==ubic.SOUTH){
+			}else if(loc==location.SOUTH){
 				priceFi+=50000;
 				System.out.println("El costo de domicilio para el sur es de 50,000 pesos, el precio final con domicilio es "+priceFi+" pesos"); 
-			}else if(ub==ubic.CENTER){
+			}else if(loc==location.CENTER){
 				priceFi+=120000;
 				System.out.println("El costo de domicilio para el centro es de 120,000 pesos, el precio final con domicilio es "+priceFi+" pesos"); 
 			}
@@ -337,7 +337,7 @@ public class T1{
 	*@param quantity[], array of double that holds the quantity of each product
 	*@param us[], array of use that holds the use for each products
 	*/
-	public static void mostrarUtil(use[] us, String [] n, double[] quantity){
+	public static void showUtil(use[] us, String [] n, double[] quantity){
 		
 
 		System.out.println("\nMateriales usados en mano de obra negra");
@@ -382,11 +382,11 @@ public class T1{
 		double[ ] priceCentro = new double[quantityOfProduct]; //Lista de precios de cada producto en la ferreteria del centro
 		double[ ] priceBarrio = new double[quantityOfProduct]; //Lista de precios de cada producto en la ferreteria del barrio
 		use[] us= new use[quantityOfProduct]; //La utilidad de cada material, es decir mano de obra negra, pintura o mano de obra blanca 
-		ubic ub= ubic.NORTH; //La ubicacion de la inmueble, esta en NORTE solo como valor inicial
+		location loc= location.NORTH; //La ubicacion de la inmueble, esta en NORTE solo como valor inicial
 		
 		fillArrays(nameOfProduct,quantityAskedFor,us);//metodo que llena los arrglos 
 		prices(priceHome,priceBarrio,priceCentro,nameOfProduct); //metodo que llena las listas de precios para cada establesamiento 
-		ub= setUbic(); //metodo que consigue la ubicacicion de la inmueble
+		loc= setlocation(); //metodo que consigue la ubicacicion de la inmueble
 	
 		
 		double pH= 0.0;//precio final de homecenteer
@@ -394,9 +394,9 @@ public class T1{
 		double pB = 0.0; //precio final de la ferreteria del barrio
 		
 		//Outputs
-		pricesForEachStore(pH,pC,pB,quantityAskedFor,priceHome,priceBarrio,priceCentro,us,ub); //metodo que imprime el precio final por establesamiento
-		priceForCheapestStore(nameOfProduct,quantityAskedFor,priceHome,priceCentro,priceBarrio,us,ub);//metodo que imprime el precio final por producto en lugar mas economico
-		mostrarUtil(us,nameOfProduct,quantityAskedFor); // metodo que imprime cada material por utilización
+		pricesForEachStore(pH,pC,pB,quantityAskedFor,priceHome,priceBarrio,priceCentro,us,loc); //metodo que imprime el precio final por establesamiento
+		priceForCheapestStore(nameOfProduct,quantityAskedFor,priceHome,priceCentro,priceBarrio,us,loc);//metodo que imprime el precio final por producto en lugar mas economico
+		showUtil(us,nameOfProduct,quantityAskedFor); // metodo que imprime cada material por utilización
 	
 	
 	

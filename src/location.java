@@ -1,0 +1,1 @@
+public enum location{NORTH, SOUTH,CENTER}
